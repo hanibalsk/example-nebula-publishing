@@ -16,14 +16,14 @@ buildscript {
 }
 
 group 'com.example.publish'
-version '1.0-SNAPSHOT'
+//version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 apply plugin: "nebula.maven-base-publish"
-//apply plugin: "nebula.source-jar"
+apply plugin: "nebula.source-jar"
 apply plugin: "nebula.compile-api"
 
 repositories {
