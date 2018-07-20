@@ -14,6 +14,14 @@ buildscript {
         classpath("com.netflix.nebula:nebula-release-plugin:6.0.0")
     }
 }
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+gradle.taskGraph.whenReady { graph ->
+    System.setProperty('org.ajoberstar.grgit.auth.username', properties.getProperty("username"))
+    System.setProperty('org.ajoberstar.grgit.auth.password', properties.getProperty("password"))
+    println System.properties['org.ajoberstar.grgit.auth.username']
+}
 
 group 'com.example.publish'
 //version '1.0-SNAPSHOT'
