@@ -1,3 +1,3 @@
 object HelloWorld {
-    val version = "2.6.0"
+    val version = "2.7.0"
 }
