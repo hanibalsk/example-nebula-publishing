@@ -1,4 +1,4 @@
 object HelloWorld {
-    val version = "2.11.4"
+    val version = "2.12.1"
     val hotfix1 = "2.4.1"
 }
