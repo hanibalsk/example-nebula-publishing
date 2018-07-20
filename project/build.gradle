@@ -7,11 +7,15 @@ buildscript {
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
         maven { setUrl("https://repo.gradle.org/gradle/libs-releases-local/") }
+        maven { setUrl("https://plugins.gradle.org/m2/") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath("com.netflix.nebula:nebula-publishing-plugin:8.1.0")
-        classpath("com.netflix.nebula:nebula-release-plugin:6.0.0")
+        classpath "com.netflix.nebula:nebula-publishing-plugin:8.1.0"
+        classpath "com.netflix.nebula:nebula-release-plugin:6.0.0"
+        classpath "org.ajoberstar:grgit:1.8.0"
+        classpath "org.ajoberstar:gradle-git:1.6.0"
+//        classpath "com.emetriq.gradle:changelog-release-plugin:1.0.1"
     }
 }
 Properties properties = new Properties()
@@ -33,6 +37,7 @@ apply plugin: 'maven-publish'
 apply plugin: "nebula.maven-base-publish"
 apply plugin: "nebula.source-jar"
 apply plugin: "nebula.compile-api"
+
 
 repositories {
     mavenCentral()

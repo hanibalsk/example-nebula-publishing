@@ -9,27 +9,40 @@ buildscript {
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
         maven { setUrl("https://repo.gradle.org/gradle/libs-releases-local/") }
+        maven { setUrl("https://plugins.gradle.org/m2/") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath("com.netflix.nebula:nebula-publishing-plugin:8.1.0")
         classpath("com.netflix.nebula:nebula-release-plugin:6.0.0")
+        classpath "com.emetriq.gradle:changelog-release-plugin:1.0.1"
+        classpath "org.ajoberstar:grgit:1.8.0"
     }
 }
 
 group 'com.example.publish'
 //version '1.0-SNAPSHOT'
 
+apply plugin: "org.ajoberstar.grgit"
+apply plugin: "emetriq.changelog-release"
+
 allprojects {
     group = 'com.example.publish'
 
     apply plugin: "nebula.release"
 
-    snapshot {
-
-    }
-
     release {
         defaultVersionStrategy = Strategies.SNAPSHOT
     }
+}
+
+changelog {
+    /** The file containing the changelog (relative to project root) */
+    changelogFile = './changelog.md'
+
+    /** The headline for the changes after the last release */
+    replaceToken = '## [NEXT RELEASE]'
+
+    /** when true, the build fails when no changelog placeholder (i.e. replaceToken) exists in the changelog file */
+    forceChangelog = true
 }
