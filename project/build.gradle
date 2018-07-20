@@ -1,0 +1,42 @@
+buildscript {
+    ext.kotlin_version = '1.2.51'
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+        maven { setUrl("https://jitpack.io") }
+        maven { setUrl("https://repo.gradle.org/gradle/libs-releases-local/") }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("com.netflix.nebula:nebula-publishing-plugin:8.1.0")
+        classpath("com.netflix.nebula:nebula-release-plugin:6.0.0")
+    }
+}
+
+group 'com.example.publish'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+apply plugin: "nebula.maven-base-publish"
+//apply plugin: "nebula.source-jar"
+apply plugin: "nebula.compile-api"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
