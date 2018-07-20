@@ -1,3 +1,6 @@
+## [NEXT RELEASE]
+... add new changes here!
+
 ## 2.12.3  /  2018-07-20
 Added variable addedVariable
 Incremented version to 2.12.3
