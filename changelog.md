@@ -1,5 +1,6 @@
 ## [NEXT RELEASE]
 ... add new changes here!
+* I changed
 
 ## 2.12.4  /  2018-07-20
 * Changes changed to lists
